@@ -1,0 +1,40 @@
+<head>
+  <title>blog</title>
+</head>
+
+<body>
+  {{> loginButtons}}
+  {{> list}}
+
+  {{#if currentUser}}
+    You're logged in.
+    {{ currentUser }}
+  {{else}}
+    You're not logged in.
+  {{/if}}
+
+  <h1>Mike's Blog</h1>
+  
+  <ul> 
+    {{#each posts}}
+      {{> post}}
+    {{/each}}
+  </ul>
+
+
+</body>
+
+<template name="post">
+  <li>{{ title }}</li>
+</template>
+
+<template name="list">
+  <ul>
+{{#each userInCollection}}
+     <li>{{profile.name}} (@{{services.twitter.screenName}}) 1
+        <img src="{{services.twitter.profile_image_url}}">
+    </li>
+{{/each}}
+</ul>
+
+</template>
